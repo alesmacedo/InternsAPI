@@ -29,7 +29,7 @@ namespace InternsAPI.Controllers
             {
                 new InternEntity {
                     Name = "Alessandro",
-                    Age = 25,
+                    Age = 22,
                     Squad = "Payment",
                     Leader = "Igor",
                     Id = new Random().Next()
@@ -58,6 +58,15 @@ namespace InternsAPI.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
+            try
+            {
+                 _internsDomainService.DeleteIntern(id);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex. Message);
+            }
+           
             return Ok();
         }
     }
