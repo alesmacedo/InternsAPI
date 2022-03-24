@@ -41,7 +41,7 @@ namespace InternsAPI.Controllers
         [HttpPost]
         public ActionResult Post(InternEntity request)
         {
-            InternEntity response = null;
+            InternEntity response;
             try
             {
                 response = _internsDomainService.CreateIntern(request);
@@ -53,6 +53,21 @@ namespace InternsAPI.Controllers
             
             return Ok(response);
 
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Put(InternEntity request)
+        {
+            try
+            {
+                _internsDomainService.UpdateIntern(request);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
         }
 
         [HttpDelete("{id}")]

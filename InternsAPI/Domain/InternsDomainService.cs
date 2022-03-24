@@ -19,23 +19,19 @@ namespace InternsAPI.Domain
             return _internRepository.CreateIntern(internEntity);
         }
 
+        public InternEntity UpdateIntern(InternEntity internEntity)
+        {
+            if (internEntity.Id == 0)
+                throw new System.Exception("Informe o Id correto.");
+               return _internRepository.UpdateIntern(internEntity);
+            
+        }
         public bool DeleteIntern(int id)
         {
-            try
-            {
-                if (id == 0)
-                    throw new System.Exception("O Id deve corresponder ao número desejado.");
-                 _internRepository.DeleteIntern(id);
-                return true;
-                
-            }
-            catch
-            {
-                return false;
-            }
-
-           
-
+            if (id == 0)
+                throw new System.Exception("O Id deve corresponder ao número desejado.");
+                _internRepository.DeleteIntern(id);
+            return true; 
         }
     }
 }

@@ -28,10 +28,23 @@ namespace InternsAPI.Repository
             return internEntity;
         }
 
-        public bool DeleteIntern(int id)
+        public InternEntity UpdateIntern(InternEntity internEntity)
         {
             
+                _sqlConnection.Open();
+            string updateQuery = "UPDATE DETAILSINTERN SET user_name='{internEntity.Name}', user_age={internEntity.Age}," +
+           "user_squad='{internEntity.Squad}', user_leader='{internEntity.Leader}';";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, _sqlConnection);
+                updateCommand.ExecuteNonQuery();
 
+                _sqlConnection.Close();
+
+                return internEntity;
+           
+        }
+
+        public bool DeleteIntern(int id)
+        {
             try
             {
                 _sqlConnection.Open();
@@ -41,15 +54,11 @@ namespace InternsAPI.Repository
 
                 _sqlConnection.Close();
                 return true;
-
             }
             catch
             {
                 return false;
             }
-
-
         }
-
     }
 }
