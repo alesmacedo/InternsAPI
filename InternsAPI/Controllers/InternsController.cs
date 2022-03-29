@@ -22,19 +22,18 @@ namespace InternsAPI.Controllers
             _internsDomainService = new InternsDomainService();
         }
 
-        [HttpGet]
-        public ActionResult Get()
+        [HttpGet("{id}")]
+        public ActionResult Get(int id)
         {
-            var response = new List<InternEntity>()
+            InternEntity response;
+           try
             {
-                new InternEntity {
-                    Name = "Alessandro",
-                    Age = 22,
-                    Squad = "Payment",
-                    Leader = "Igor",
-                    Id = new Random().Next()
-                }
-            };
+               response = _internsDomainService.GetIntern(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);  
+            }
             return Ok(response);
         }
 

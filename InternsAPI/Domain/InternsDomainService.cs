@@ -11,19 +11,29 @@ namespace InternsAPI.Domain
         {
             _internRepository = new InternRepository();
         }
+
+        public InternEntity GetIntern(int id)
+        {
+            if (id == 0)
+                throw new System.Exception("Insira o Id desejado.");
+
+            return _internRepository.GetIntern(id);
+        }
         public InternEntity CreateIntern(InternEntity internEntity)
         {
-            if (internEntity.Id == 0)
+            if (internEntity.Id != 0)
                 throw new System.Exception("O Id não pode ser enviado no momento da criação.");
 
             return _internRepository.CreateIntern(internEntity);
         }
 
+
         public InternEntity UpdateIntern(InternEntity internEntity)
         {
             if (internEntity.Id == 0)
                 throw new System.Exception("Informe o Id correto.");
-               return _internRepository.UpdateIntern(internEntity);
+
+            return _internRepository.UpdateIntern(internEntity);
             
         }
         public bool DeleteIntern(int id)
