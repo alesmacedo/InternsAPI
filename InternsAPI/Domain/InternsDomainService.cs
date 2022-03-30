@@ -26,8 +26,6 @@ namespace InternsAPI.Domain
 
             return _internRepository.CreateIntern(internEntity);
         }
-
-
         public InternEntity UpdateIntern(InternEntity internEntity)
         {
             if (internEntity.Id == 0)
@@ -40,7 +38,9 @@ namespace InternsAPI.Domain
         {
             if (id == 0)
                 throw new System.Exception("O Id deve corresponder ao número desejado.");
-                _internRepository.DeleteIntern(id);
+            
+            _internRepository.DeleteIntern(id);
+
             return true; 
         }
     }

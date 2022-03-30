@@ -25,10 +25,10 @@ namespace InternsAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            InternEntity response;
+           InternEntity response;
            try
             {
-               response = _internsDomainService.GetIntern(id);
+                response = _internsDomainService.GetIntern(id);
             }
             catch (Exception ex)
             {
@@ -51,7 +51,6 @@ namespace InternsAPI.Controllers
             }
             
             return Ok(response);
-
         }
 
         [HttpPut("{id}")]
@@ -59,7 +58,7 @@ namespace InternsAPI.Controllers
         {
             try
             {
-                _internsDomainService.UpdateIntern(request);
+                 _internsDomainService.UpdateIntern(request);
             }
             catch(Exception ex)
             {
