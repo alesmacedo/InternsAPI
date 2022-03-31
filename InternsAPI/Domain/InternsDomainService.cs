@@ -12,6 +12,13 @@ namespace InternsAPI.Domain
             _internRepository = new InternRepository();
         }
 
+        public List<InternEntity> GetAllInterns(string interns)
+        {
+            if (interns != null)
+                throw new System.Exception("URL inválida.");
+
+            return _internRepository.GetAllInterns(interns);
+        }
         public InternEntity GetIntern(int id)
         {
             if (id == 0)

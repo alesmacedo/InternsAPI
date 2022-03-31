@@ -22,6 +22,20 @@ namespace InternsAPI.Controllers
             _internsDomainService = new InternsDomainService();
         }
 
+        [HttpGet]
+        public ActionResult GetAll(string interns)
+        {
+            List<InternEntity> response;
+            try
+            {
+                response = _internsDomainService.GetAllInterns(interns);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(response);
+        }
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
